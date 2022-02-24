@@ -6,6 +6,10 @@ class postsController{
 		$post = post::getAll();
 		return $post;
 	}
+	// public function getusernames(){
+	// 	$post = post::getusername();
+	// 	return $post;
+	// }
 
 	public function getOnepost(){
 		if(isset($_POST['id'])){

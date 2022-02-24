@@ -1,4 +1,5 @@
 <?php 
+// var_dump($_POST);
 	if(isset($_POST['id'])){
 		$exitpost = new postsController();
 		$post = $exitpost->getOnepost();
@@ -29,9 +30,10 @@
 						</div>
 						<div class="form-group">
 							<label for="description">description</label>
-							<input type="text" name="description" class="form-control" placeholder="description"
-							value="<?php echo $post->description; ?>"
-							>
+							<textarea type="text" name="description" class="form-control" placeholder="description" rows="5" cols="33"
+							><?php echo $post->description; ?></textarea>
+							
+							
 						</div>
 						<div class="form-group">
 							<label for="picture">picture</label>

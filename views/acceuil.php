@@ -12,7 +12,7 @@
     <header>
       
       <nav class="nav">
-        <a href="/" class="logo">logo</a>
+        <a href="/" class="logo">CENI <span style="color:#eb4f44;">MASTER</span></a>
 
         <div class="hamburger">
           <span class="line"></span>

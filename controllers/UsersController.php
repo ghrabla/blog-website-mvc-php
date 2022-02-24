@@ -10,7 +10,7 @@ class UsersController {
 			$_SESSION['user-id'] = $result->id;
 			Redirect::to('post');    
 		}else{
-			Session::set('error','Pseudo ou mot de passe est incorrect');
+			Session::set('error','password or username is not correct');
 			Redirect::to('login');
 		}
 	}
@@ -24,7 +24,7 @@ class UsersController {
 		);
 		$result = User::createUser($data);
 		if($result === 'ok'){
-			Session::set('success','Compte crée');
+			Session::set('success','account created');
 			Redirect::to('login');
 		}else{
 			echo $result;

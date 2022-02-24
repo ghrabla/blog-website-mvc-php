@@ -2,12 +2,40 @@
 
 class post {
 
+
 	static public function getAll(){
-		$stmt = DB::connect()->prepare('SELECT * FROM post');
+		$stmt = DB::connect()->prepare('SELECT post.* ,user.username,user.email
+		 FROM post
+		 INNER JOIN user
+		 ON post.userId = user.id
+		 ORDER BY post.published_at DESC
+		 ');
 		$stmt->execute();
 		return $stmt->fetchAll();
 		
 	}
+
+
+	static public function getprofil(){
+		$stmt = DB::connect()->prepare('SELECT * FROM post WHERE 
+		 
+		 ');
+		$stmt->execute();
+		return $stmt->fetchAll();
+		
+	}
+	// static public function getAll(){
+	// 	$stmt = DB::connect()->prepare('SELECT * FROM post');
+	// 	$stmt->execute();
+	// 	return $stmt->fetchAll();
+		
+	// }
+	// $this->db->query('SELECT posts.* , users.firstName,users.lastName,users.userId
+    //                      FROM posts 
+    //                      INNER JOIN users
+    //                      ON posts.userId = users.userId 
+    //                      ORDER BY posts.published_at DESC
+    //                      ');
 	static public function getpost($data){
 		$id = $data['id'];
 		try{
@@ -72,7 +100,10 @@ class post {
 	static public function searchpost($data){
 		$search = $data['search'];
 		try{
-			$query = 'SELECT * FROM post WHERE title LIKE ? OR description LIKE ?';
+			$query = 'SELECT post.* ,user.username,user.email
+			FROM post
+			INNER JOIN user
+			ON post.userId = user.id WHERE title LIKE ? OR description LIKE ?';
 			$stmt = DB::connect()->prepare($query);
 			$stmt->execute(array('%'.$search.'%','%'.$search.'%'));
 			$posts = $stmt->fetchAll();
