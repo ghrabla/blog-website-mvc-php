@@ -1,4 +1,4 @@
-CREATE TABLE users (
+CREATE TABLE user (
     id int PRIMARY KEY AUTO_INCREMENT NOT NULL,
     username varchar(30) NOT NULL,
     email varchar(50) NOT NULL,
@@ -13,7 +13,7 @@ CREATE TABLE post (
     type varchar(50),
     userId int ,
     published_at datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (userId) REFERENCES users(id) ON DELETE CASCADE
+    FOREIGN KEY (userId) REFERENCES user(id) ON DELETE CASCADE
 );
 
 CREATE TABLE comment (
@@ -21,6 +21,6 @@ CREATE TABLE comment (
     text varchar(800),
     userId INT NOT NULL,
     postId INT NOT NULL,
-    FOREIGN KEY (userId) REFERENCES users(id) ON DELETE CASCADE,
+    FOREIGN KEY (userId) REFERENCES user(id) ON DELETE CASCADE,
     FOREIGN KEY (postId) REFERENCES post(id) ON DELETE CASCADE
 );
